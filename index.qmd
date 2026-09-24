@@ -11,6 +11,13 @@ I am interested in data analysis, business research, and using analytics to supp
 
 This website contains my work for STA 9750.
 
+## Mini-Projects
+
+- [Mini-Project 1](mp01.html)
+- [Mini-Project 2](mp02.html)
+- [Mini-Project 3](mp03.html)
+- [Mini-Project 4](mp04.html)
+
 ```{r}
 #| echo: false
 #| message: false
