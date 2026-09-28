@@ -1,15 +1,22 @@
 ---
-title: "Ennea's STA 9750 Portfolio"
+title: "Ennea's Data Corner | STA 9750"
 ---
 ![](headshot.jpeg){width=35%}
 
 ## Welcome!
 
-Hi! My name is Ennea. I am a graduate student at Baruch College studying AI and Business Analytics with a concentration in Data Analytics.
+Hi! I’m Ennea @ Kyal Sin Lin Lei, a graduate student at Baruch College studying AI and Business Analytics with a concentration in Data Analytics.
 
-I am interested in data analysis, business research, and using analytics to support better decision-making.
+I genuinely enjoy working with complex data, especially when there is a puzzle to solve, a pattern to uncover, or a messy question that needs to be turned into something clear and useful. I’m especially interested in the intersection of analytics, research, business, and communication, and I love seeing how data can help explain real-world decisions.
 
-This website contains my work for STA 9750.
+Outside of data, I’m a big foodie and a devoted movie and TV person. Some of my favorites include *Dead Poets Society*, *The Breakfast Club*, *Peaky Blinders*, *Game of Thrones*, and *American Psycho*. My current music rotation is a slightly chaotic mix of Air Supply, The Black Eyed Peas, and Suki Waterhouse.
+
+This website is my little data corner for STA 9750, a place to solve puzzles, experiment with ideas, and share the projects I build along the way.
+
+## Connect 
+
+Please feel free to connect with me!🤗  
+[LinkedIn](https://www.linkedin.com/in/kyalsinlin-ennea-lei/)  [GitHub](https://github.com/kyalKyallab)
 
 ## Mini-Projects
 
