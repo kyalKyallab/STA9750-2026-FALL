@@ -1,3 +1,33 @@
 h1.title {
   color: #d96c9b;
 }
+
+
+/* Cute pink social buttons */
+
+.connect-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.connect-button {
+  display: inline-block;
+  background-color: #FCE4EC;
+  color: #AD326A !important;
+  padding: 11px 24px;
+  border-radius: 30px;
+  border: 1px solid #F8BBD0;
+  font-weight: 600;
+  text-decoration: none !important;
+  box-shadow: 0 3px 8px rgba(180, 55, 100, 0.10);
+  transition: all 0.2s ease;
+}
+
+.connect-button:hover {
+  background-color: #E96B9B;
+  color: white !important;
+  border-color: #E96B9B;
+  transform: translateY(-2px);
+}

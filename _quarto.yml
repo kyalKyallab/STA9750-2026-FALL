@@ -7,10 +7,22 @@ website:
   description:
     Course Projects for STA 9750 at Baruch College
   site-url: "https://kyalKyalLab.github.io/STA9750-2026-FALL/"
+ 
   navbar:
     background: primary
     search: false
-    
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Mini Project 1"
+        href: mp01.qmd
+      - text: "Mini Project 2"
+        href: mp02.qmd
+      - text: "Mini Project 3"
+        href: mp03.qmd
+      - text: "Mini Project 4"
+        href: mp04.qmd
+
 format:
   html:
     theme: sandstone
