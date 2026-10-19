@@ -3,6 +3,67 @@ title: "What We Watched: Exploring Netflix Viewing Data"
 author: "Ennea Lei"
 format: html
 ---
+```{=html}
+<style>
+.netflix-hero {
+  background: linear-gradient(120deg, #111111, #430a11);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  border-radius: 14px;
+  margin: 22px 0 35px;
+  overflow: hidden;
+}
+
+.netflix-n {
+  width: 70px;
+  height: 95px;
+  margin-bottom: 15px;
+  animation: netflix-reveal 1.3s ease-out both;
+}
+
+.netflix-hero h2 {
+  color: white;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin: 10px 0;
+  animation: netflix-reveal 1s ease-out .6s both;
+}
+
+.netflix-hero p {
+  color: #ddd;
+  animation: netflix-reveal 1s ease-out 1s both;
+}
+
+@keyframes netflix-reveal {
+  from {
+    opacity: 0;
+    transform: scale(.7) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce), print {
+  .netflix-hero * { animation: none !important; }
+}
+</style>
+
+<div class="netflix-hero">
+  <svg class="netflix-n" viewBox="0 0 100 130"
+       role="img" aria-label="Red letter N">
+    <path d="M10 5 H32 V125 H10 Z" fill="#B1060E"/>
+    <path d="M68 5 H90 V125 H68 Z" fill="#B1060E"/>
+    <path d="M10 5 H32 L90 125 H68 Z" fill="#E50914"/>
+  </svg>
+  <p>ENNEA'S DATA CORNER · MINI PROJECT 01</p>
+  <h2>BEHIND THE BINGE.</h2>
+  <p>Exploring Netflix viewing trends and the stories behind the numbers.</p>
+</div>
+```
+
 ## Data Acquisition
 
 ```{r}
@@ -204,10 +265,6 @@ How many different shows and movies are covered in this data set?
 
 The dataset contains `r scales::comma(unique_titles)` unique titles.
 
-How many different shows and movies are covered in this data set?
-
-The dataset contains `r scales::comma(dplyr::n_distinct(NETFLIX_DATA$title))` unique titles.
-
 ### Question 3: Bridgerton Universe Viewing Hours
 
 ```{r}
@@ -261,7 +318,10 @@ stranger_things_titles <- NETFLIX_DATA |>
   filter(str_detect(title, "Stranger Things")) |>
   filter_out(str_detect(title, "Beyond Stranger Things")) |>
   filter_out(str_detect(title, "Fireplace")) |>
-  filter_out(str_detect(title, "Tales From '85"))
+  filter_out(str_detect(
+  title,
+  regex("Tales from", ignore_case = TRUE)
+))
 
 # Check the remaining titles
 stranger_things_titles |>
@@ -495,7 +555,7 @@ How has Netflix’s catalog changed in size over the periods for which we have d
 
 One thing that stood out to me was the unusually high number of titles in 2023H1 compared to the other periods. However, I also noticed that a lot of runtime information is missing for that period, so I think we should be careful when comparing the total runtime with later periods. The difference in the number of titles might also be related to how the data was reported. 
 
-Looking at 2023H2 onwards, the number of reported titles gradually increased from 6,574 to 8,163 by 2026H1, an increase of `r scales::percent(catalog_size$number_of_titles[catalog_size$period == "2026H1"] / catalog_size$number_of_titles[catalog_size$period == "2023H2"] - 1, accuracy = 0.1)`. The total runtime also increased from 50,117 to 62,855 hours, representing a `r scales::percent(catalog_size$total_runtime_hours[catalog_size$period == "2026H1"] / catalog_size$total_runtime_hours[catalog_size$period == "2023H2"] - 1, accuracy = 0.1)` increase. This suggests that more content is appearing in Netflix's viewing reports over time, although it may not represent everything available on Netflix.
+Looking at 2023H2 onwards, the number of reported titles gradually increased from 6,574 to 8,163 by 2026H1, an increase of `r scales::percent(catalog_size$number_of_titles[catalog_size$period == "2026H1"] / catalog_size$number_of_titles[catalog_size$period == "2023H2"] - 1, accuracy = 0.1)`. The total runtime also increased from 50,117 to 62,855 hours, representing a `r scales::percent(catalog_size$total_runtime_hours[catalog_size$period == "2026H1"] / catalog_size$total_runtime_hours[catalog_size$period == "2023H2"] - 1, accuracy = 0.1)` increase. This suggests that more content is appearing in Netflix's viewing reports over time, although it may not represent everything available on Netflix. As an additional check, I compared the total runtime with an estimate using only the longest available runtime per title in each period. The difference was less than 0.4% in every period, suggesting that duplicate standardized titles had little effect on the overall trend.
 
 
 
@@ -879,7 +939,7 @@ Based on my analysis of Netflix’s viewing data from 2023 through the first hal
 
 ### 1. Global Content Strategy: Investing in International Appeal
 
-One finding that stood out to me was the importance of globally available content in viewing activity. In 2023H2, globally available titles generated `r scales::percent(memo_global_2023h2, accuracy = 0.1)`  of viewing hours, compared with `r scales::percent(memo_global_2026h1, accuracy = 0.1)` in 2026H1. This was a decrease of `r scales::number(100 * (global_trends$global_hours_share[global_trends$period == "2023H2"] - global_trends$global_hours_share[global_trends$period == "2026H1"]), accuracy = 0.1)` percentage points between the two periods, although globally available content still represented a greater share of viewing hours than its share of records known availability. In 2026H1, it made up only `r scales::percent(memo_global_records, accuracy = 0.1)` of records with known availability.
+One finding that stood out to me was the importance of globally available content in viewing activity. In 2023H2, globally available titles generated `r scales::percent(memo_global_2023h2, accuracy = 0.1)`  of viewing hours, compared with `r scales::percent(memo_global_2026h1, accuracy = 0.1)` in 2026H1. This was a decrease of `r scales::number(100 * (global_trends$global_hours_share[global_trends$period == "2023H2"] - global_trends$global_hours_share[global_trends$period == "2026H1"]), accuracy = 0.1)` percentage points between the two periods, although globally available content still represented a greater share of viewing hours than its share of records with known availability. In 2026H1, it made up only `r scales::percent(memo_global_records, accuracy = 0.1)` of records with known availability.
 
 For 2027, I suggest that Netflix invest selectively in original productions that could appeal to audiences across different countries while keeping their local identity. Rather than increasing production everywhere, Netflix could begin with a few projects in selected markets and study how audiences respond before expanding.
 
@@ -887,9 +947,9 @@ However, global availability does not necessarily mean a title is a Netflix orig
 
 ### 2. Content Portfolio Strategy: Balancing New Hits and Long-Term Favorites
 
-One thing that surprised me was how small a share of total viewing hours came from the most popular titles. The top 10 titles generated `r scales::percent(memo_top10_2023h2, accuracy = 0.01)` of viewing hours in 2023H2. This increased to `r scales::percent(memo_top10_2025h2, accuracy = 0.01)` in 2025H2 before dropping to `r scales::percent(memo_top10_2026h1, accuracy = 0.01)` in 2026H1. This makes me think that Netflix’s viewing activity depends on more than just a few major hits.
+One thing that surprised me was how small a share of total viewing hours came from the most popular titles. The top 10 titles generated `r scales::percent(memo_top10_2023h2, accuracy = 0.01)` of viewing hours in 2023H2. This increased to `r scales::percent(memo_top10_2025h2, accuracy = 0.01)` in 2025H2 before dropping to `r scales::percent(memo_top10_2026h1, accuracy = 0.01)` in 2026H1. This makes me think that Netflix’s viewing activity depends on more than just a few major hits. The viewing concentration graph also shows how the top 10 share changes across reporting periods rather than steadily increasing over time.
 
-I also used the Gini coefficient to understand how evenly views were distributed across titles. A value closer to 1 means that viewing is more concentrated among a smaller number of titles. The coefficient increased from `r scales::number(gini_results$gini_views[gini_results$period == "2023H2"], accuracy = 0.001)` in 2023H2 to `r scales::number(gini_results$gini_views[gini_results$period == "2026H1"], accuracy = 0.001)` in 2026H1, although it reached its highest point in 2025H1. I used runtime adjusted views rather than total viewing hours to make comparisons between titles of different lengths fairer. This suggests that viewing became more concentrated over time, even though the top 10 titles make up a relatively small share f total viewing hours.
+I also used the Gini coefficient to understand how evenly views were distributed across titles. A value closer to 1 means that viewing is more concentrated among a smaller number of titles. The coefficient increased from `r scales::number(gini_results$gini_views[gini_results$period == "2023H2"], accuracy = 0.001)` in 2023H2 to `r scales::number(gini_results$gini_views[gini_results$period == "2026H1"], accuracy = 0.001)` in 2026H1, although it reached its highest point in 2025H1. I used runtime adjusted views rather than total viewing hours to make comparisons between titles of different lengths fairer. This suggests that viewing became more concentrated over time, even though the top 10 titles make up a relatively small share of total viewing hours. Since some estimated views values are missing, this calculation only includes titles with usable viewing estimates. The Gini comparison begins in 2023H2 because the estimated views data is entirely missing for 2023H1.
 
 I found that older shows like Breaking Bad and Pablo Escobar maintained high viewing hours across all seven periods. People may not always open Netflix looking for something new. Some might prefer familiar shows or discover older titles for the first time.
 For 2027, Netflix should balance creating new original hits with developing series that can remain popular over time. The company could study which genres and stories maintain audience interest across several periods and use these findings when deciding which originals to produce or renew.
