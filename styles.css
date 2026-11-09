@@ -31,3 +31,197 @@ h1.title {
   border-color: #E96B9B;
   transform: translateY(-2px);
 }
+
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+h1, h2, h3 {
+  color: #B83272;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.3rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.7rem;
+  border-bottom: 2px solid #F3D6E4;
+  padding-bottom: 0.3rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-top: 1.2rem;
+}
+
+.press-release {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.release-tag {
+  display: inline-block;
+  background: #FBEAF2;
+  color: #B83272;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.subheadline {
+  font-size: 1.05rem;
+  color: #666666;
+  margin-bottom: 1.4rem;
+}
+
+.lede {
+  font-size: 1.02rem;
+  background: #FCF6F9;
+  border-left: 4px solid #D65A8A;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.fact-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin: 1.4rem 0 1.8rem 0;
+}
+
+.fact-item {
+  background: #FFF7FA;
+  border: 1px solid #F3D6E4;
+  border-radius: 10px;
+  padding: 0.9rem;
+  text-align: center;
+}
+
+.fact-number {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #B83272;
+}
+
+.fact-label {
+  font-size: 0.88rem;
+  color: #666666;
+}
+
+.award-card {
+  background: #FFF9FB;
+  border: 1px solid #F1D4E2;
+  border-radius: 12px;
+  padding: 1.2rem 1.3rem;
+  margin: 1.2rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.award-title {
+  color: #B83272;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-number {
+  color: #B83272;
+  font-weight: 700;
+}
+
+.method-box, .source-box {
+  background: #FAFAFA;
+  border-left: 4px solid #D65A8A;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  margin-top: 1.4rem;
+}
+
+.small-note {
+  font-size: 0.92rem;
+  color: #666666;
+}
+
+.media-title {
+  margin-top: 2rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .fact-box {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* GTA IV Press Release */
+
+.press-release {
+  background: #FFF8FB;
+  border: 1px solid #EFD6E1;
+  border-radius: 18px;
+  padding: 2.5rem;
+  max-width: 950px;
+  margin: 2rem auto;
+  box-shadow: 0 8px 28px rgba(184, 50, 114, 0.07);
+  line-height: 1.7;
+}
+
+/* Press release headline */
+.press-release h2 {
+  color: #B83272;
+  font-weight: 700;
+  border-bottom: 2px solid #F1D4E2;
+  padding-bottom: 0.8rem;
+}
+
+/* Award announcement cards */
+.press-release .award-card {
+  background: #FFF0F6;
+  border: 1px solid #EED2DF;
+  border-left: 5px solid #D65A8A;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: none;
+}
+
+.press-release .award-card h4 {
+  color: #B83272;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+/* Vincidoo Award: softer contrasting color */
+.press-release .vincidoo-card {
+  background: #F7F3F7;
+  border-color: #E6DCE5;
+  border-left-color: #96738D;
+}
+
+.press-release .vincidoo-card h4 {
+  color: #805875;
+}
+
+/* Better mobile spacing */
+@media (max-width: 768px) {
+  .press-release {
+    padding: 1.25rem;
+  }
+}
